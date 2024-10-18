@@ -39,21 +39,6 @@ const FormUserLogin = () => {
     } catch (err) {
       console.error(err);
     }
-
-    // const formData = new FormData(e.target as HTMLFormElement);
-    // const { error } = await actions.loginAccount(formData);
-    // setFormValues((prev) => ({
-    //   ...prev,
-    //   submiting: true,
-    // }));
-    // if (error) {
-    //   console.log(error);
-    //   if (isInputError(error)) {
-    //     console.log(error.fields);
-    //   }
-    //   return;
-    // }
-    // window.location.reload();
   };
 
   return (

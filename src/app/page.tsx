@@ -1,4 +1,5 @@
 "use client";
+import { useEffect } from "react";
 import Image from "next/image";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "./firebase/config";
@@ -8,17 +9,16 @@ import LogoutButton from "@/components/client/LogoutButton";
 export default function Home() {
   const [userAuth] = useAuthState(auth);
   const router = useRouter();
-  let userSession;
 
-  if (typeof window !== "undefined") {
-    // Este código solo se ejecuta en el navegador
-    userSession = sessionStorage.getItem("userSession");
-  }
+  useEffect(() => {
+    const userSession = sessionStorage.getItem("userSession");
 
-  if (!userAuth && !userSession) {
-    router.push("/sign-in");
-  } else {
-  }
+    if (!userAuth && !userSession) {
+      router.push("/sign-in");
+    } else {
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userAuth]);
 
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">

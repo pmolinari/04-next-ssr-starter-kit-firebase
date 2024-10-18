@@ -37,16 +37,6 @@ const FormUserRegistration = () => {
     } catch (err) {
       console.error(err);
     }
-
-    // const { error } = await actions.createAccount(formData);
-    // if (error) {
-    //   console.log(error);
-    //   if (isInputError(error)) {
-    //     console.log(error.fields);
-    //   }
-    //   return;
-    // }
-    // window.location.reload();
   };
 
   return (
