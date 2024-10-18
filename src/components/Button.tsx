@@ -1,6 +1,8 @@
 import { type ButtonHTMLAttributes, type FC } from "react";
 
-export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {}
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  ppp?: string;
+}
 
 export const Button: FC<ButtonProps> = ({
   children,

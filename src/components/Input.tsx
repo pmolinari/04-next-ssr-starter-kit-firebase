@@ -12,13 +12,13 @@ const baseStyles: CSSProperties = {
 
 export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   label: string;
-  error?: boolean;
+  // error?: boolean;
   message?: string;
 };
 
 const Input: FC<InputProps> = ({
   label,
-  error,
+  // error,
   message,
   type = "text",
   value,

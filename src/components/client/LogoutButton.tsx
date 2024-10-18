@@ -1,19 +1,13 @@
+"use client";
 import type { FC } from "react";
 import Button, { type ButtonProps } from "../Button";
-import { isInputError } from "astro:actions";
-import { actions } from "astro:actions";
+import { signOut } from "firebase/auth";
+import { auth } from "@/app/firebase/config";
 
-const LogoutButton: FC<ButtonProps> = ({ onClick, children, ...rest }) => {
+const LogoutButton: FC<ButtonProps> = ({ children, ...rest }) => {
   const handleClick = async () => {
-    const { error } = await actions.logoutAccount();
-    if (error) {
-      console.log(error);
-      if (isInputError(error)) {
-        console.log(error.fields);
-      }
-      return;
-    }
-    window.location.reload();
+    signOut(auth);
+    sessionStorage.removeItem("userSession");
   };
 
   return (

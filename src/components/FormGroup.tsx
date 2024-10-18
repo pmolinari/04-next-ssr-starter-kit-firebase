@@ -2,13 +2,13 @@ import { useState, type FC, type InputHTMLAttributes } from "react";
 
 export type InputFormGroupProps = InputHTMLAttributes<HTMLInputElement> & {
   label: string;
-  error?: boolean;
+  // error?: boolean;
   message?: string;
 };
 
 const InputFormGroup: FC<InputFormGroupProps> = ({
   label,
-  error,
+  // error,
   message,
   type = "text",
   value,

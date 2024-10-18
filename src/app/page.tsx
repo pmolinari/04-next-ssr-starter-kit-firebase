@@ -3,14 +3,17 @@ import Image from "next/image";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "./firebase/config";
 import { useRouter } from "next/navigation";
-import { signOut } from "firebase/auth";
+import LogoutButton from "@/components/client/LogoutButton";
 
 export default function Home() {
   const [userAuth] = useAuthState(auth);
   const router = useRouter();
-  const userSession = sessionStorage.getItem("userSession");
+  let userSession;
 
-  console.log({ userAuth, userSession });
+  if (typeof window !== "undefined") {
+    // Este código solo se ejecuta en el navegador
+    userSession = sessionStorage.getItem("userSession");
+  }
 
   if (!userAuth && !userSession) {
     router.push("/sign-in");
@@ -19,14 +22,7 @@ export default function Home() {
 
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <button
-        onClick={() => {
-          signOut(auth);
-          sessionStorage.removeItem("userSession");
-        }}
-      >
-        LogOut
-      </button>
+      <LogoutButton>LogOut</LogoutButton>
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
         <Image
           className="dark:invert"

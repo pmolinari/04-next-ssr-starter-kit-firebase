@@ -1,7 +1,10 @@
+"use client";
 import React, { useState } from "react";
 import { v4 as uuidV4 } from "uuid";
-import { actions, isInputError } from "astro:actions";
 import Button from "../Button";
+import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { auth } from "@/app/firebase/config";
+import { useRouter } from "next/navigation";
 
 function generateCompactUuid() {
   const uuid = uuidV4(); // Generar el UUID v4
@@ -10,26 +13,26 @@ function generateCompactUuid() {
 }
 
 const FormCredential = () => {
+  const router = useRouter();
+  const [createUserWithEmailAndPassword] =
+    useCreateUserWithEmailAndPassword(auth);
   const [submiting, setSubmiting] = useState(false);
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSubmiting(true);
-    const credential = generateCompactUuid();
-    const formData = new FormData();
-    formData.append("email", `${credential}@viewer.com.ar`);
-    formData.append("password", credential);
-    const { error } = await actions.createAccount(formData);
-    await actions.logoutAccount();
-    setSubmiting(false);
-    if (error) {
-      console.log(error);
-      if (isInputError(error)) {
-        console.log(error.fields);
-      }
-      return;
+
+    try {
+      const credential = generateCompactUuid();
+      await createUserWithEmailAndPassword(
+        `${credential}@viewer.com.ar`,
+        credential
+      );
+      sessionStorage.setItem("userSession", "true");
+      router.push("/");
+    } catch (err) {
+      console.error(err);
     }
-    window.location.reload();
   };
 
   return (
