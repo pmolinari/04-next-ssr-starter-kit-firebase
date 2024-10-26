@@ -1,6 +1,7 @@
 {
   "name": "04-next-ssr-starter-kit-firebase",
   "version": "0.1.0",
+  "description": "Prueba",
   "private": true,
   "scripts": {
     "dev": "next dev",
