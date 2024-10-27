@@ -8,6 +8,18 @@ runConfig:
 
 # Environment variables and secrets
 env:
+  - variable: NEXT_PUBLIC_FIREBASE_API_KEY
+    secret: projects/826052192647/secrets/NEXT_PUBLIC_FIREBASE_API_KEY/versions/1
+    availability:
+      - BUILD
+      - RUNTIME
+
+  - variable: NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN
+    secret: projects/826052192647/secrets/NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN/versions/1
+    availability:
+      - BUILD
+      - RUNTIME
+
   - variable: NEXT_PUBLIC_FIREBASE_PROJECT_ID
     secret: projects/826052192647/secrets/NEXT_PUBLIC_FIREBASE_PROJECT_ID/versions/1
     availability:
@@ -37,4 +49,3 @@ env:
     availability:
       - BUILD
       - RUNTIME
-
