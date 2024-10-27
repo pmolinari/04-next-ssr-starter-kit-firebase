@@ -13,3 +13,9 @@ env:
     availability:
       - BUILD
       - RUNTIME
+
+  - variable: NEXT_PUBLIC_FIREBASE_PROJECT_ID
+    value: 123456
+    availability:
+      - BUILD
+      - RUNTIME
