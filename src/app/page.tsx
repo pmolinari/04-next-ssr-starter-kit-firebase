@@ -1,28 +1,9 @@
 "use client";
-import { useEffect } from "react";
 import Image from "next/image";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "./firebase/config";
-import { useRouter } from "next/navigation";
-import LogoutButton from "@/components/client/LogoutButton";
 
 export default function Home() {
-  const [userAuth] = useAuthState(auth);
-  const router = useRouter();
-
-  useEffect(() => {
-    const userSession = sessionStorage.getItem("userSession");
-
-    if (!userAuth && !userSession) {
-      router.push("/sign-in");
-    } else {
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [userAuth]);
-
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <LogoutButton>LogOut</LogoutButton>
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
         <Image
           className="dark:invert"
@@ -41,6 +22,8 @@ export default function Home() {
             .
           </li>
           <li>Save and see your changes instantly.</li>
+          <li>Pepe: {process.env.NEXT_PUBLIC_PEPE}</li>
+          <li>ProjectId: {process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID}</li>
         </ol>
 
         <div className="flex gap-4 items-center flex-col sm:flex-row">
