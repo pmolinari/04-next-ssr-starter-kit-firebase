@@ -43,3 +43,9 @@ env:
     availability:
       - BUILD
       - RUNTIME
+
+  - variable: NEXT_PUBLIC_PEPE
+    value: NEXT PUBLIC PEPE VALUE
+    availability:
+      - BUILD
+      - RUNTIME
