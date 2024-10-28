@@ -1,4 +1,5 @@
 import FormUserLogin from "@/components/client/FormUserLogin";
+import SignInButton from "@/components/client/SignInButton";
 import React from "react";
 
 const SignInPage = () => {
@@ -17,6 +18,7 @@ const SignInPage = () => {
     >
       <h1>SignInPage</h1>
       <FormUserLogin />
+      <SignInButton>SignIn with Google</SignInButton>
     </div>
   );
 };
